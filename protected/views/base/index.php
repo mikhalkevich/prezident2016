@@ -1,7 +1,7 @@
 <? $this->breadcrumbs=array(
     'Кандидаты'=>array('/candidats/index'),
     $main->name);?>
-<h1 align="center">Лидер Компании <?php echo $model->name; ?></h1>
+<h1 align="center"><?php echo $model->name; ?></h1>
 <table width="100%">
     <tr>
         <td width="25%" align="center" valign="top">
