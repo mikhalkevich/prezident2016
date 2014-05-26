@@ -48,8 +48,8 @@ class MongoController extends Controller {
     
      public function actionIndex() {
         $this->layout = '//layouts/column1';
-        $candidats = Candidatsm::model()->find(["status"=>"show"]);
-        $this->render('index',['candidats'=>$candidats]);
+        $candidats = Candidatsm::model()->find(array("status"=>"show"));
+        $this->render('index',array('candidats'=>$candidats));
         
     }
     
