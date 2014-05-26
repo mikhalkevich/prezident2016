@@ -23,7 +23,7 @@ class BaseController extends Controller {
     public function __construct($id, $module = null) {
         parent::__construct('Base');
         $this->main = Candidats::model()->find('id= :id', array('id' => $id));
-        $this->a = Votes::model()->find('ip = :ip', array(':ip' => $_SERVER['REMOTE_ADDR']));
+        $this->a = Votes::model()->find('candidat_id = :candidat_id' and 'ip = :ip', array(':ip' => $_SERVER['REMOTE_ADDR'], ':candidat_id'=>$id));
         if ($this->a) {
             $this->golos = $this->a;
         } else {
