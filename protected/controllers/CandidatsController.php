@@ -56,7 +56,7 @@ public function actions()
     public function actionIndex() {
         $this->layout = '//layouts/column1';
         $candidats = Candidats::model()->findAll('status','=','show');
-        $this->render('index',['candidats'=>$candidats]);
+        $this->render('index',array('candidats'=>$candidats));
         
     }
 
@@ -74,7 +74,7 @@ public function actions()
         }
 
        $result = $this->renderPartial('_view', $votes, true);
-        $this->render('view', ['r' => $result,'main' => $model,'votes'=>$votes]);
+        $this->render('view', array('r' => $result,'main' => $model,'votes'=>$votes));
         
     }
 /**
