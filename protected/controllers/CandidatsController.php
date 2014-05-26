@@ -40,10 +40,6 @@ public function actions()
                 'actions' => array('index', 'view', 'new', 'all','captcha'),
                 'users' => array('*'),
             ),
-            array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions' => array('admin', 'update','delete','new','captcha'),
-                'users' => array('admin'),
-            ),
             array('deny', // deny all users
                 'users' => array('*'),
             ),
@@ -73,7 +69,7 @@ public function actions()
             Yii::app()->end();
         }
 
-       $result = $this->renderPartial('_view', $votes, true);
+        $result = $this->renderPartial('_view', $votes, true);
         $this->render('view', ['r' => $result,'main' => $model,'votes'=>$votes]);
         
     }

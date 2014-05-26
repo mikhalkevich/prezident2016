@@ -33,7 +33,7 @@ $this->breadcrumbs = array(
                 <h5><?= $c->id ?></h5>
             </td>
             <td>
-                <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/small_<?= $c->picture; ?>" align="center" />
+                <img width=250px src="<?php echo Yii::app()->request->baseUrl; ?>/images/<?= $c->picture; ?>" align="center" />
                 <h5><?= CHtml::link($c->name, array('candidats/view/' . $c->id), array('class' => 'bigname')) ?></h5>
             </td>
             <td>
@@ -57,10 +57,6 @@ $(document).ready(function() {
    });
 });
 </script>
-				<h4>Видеоролик кандидата</h4>
-			   <video src="/audio/koldunv.ogg" wirdth ="320" heigth="240" controls poster= "">
-			   <a href ="/audio/koldunv.ogg">Загрузка видеоролика</a>
-			   </video> 
             </td>
             <td>
                <h3><?= $c->raiting ?></h3>

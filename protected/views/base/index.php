@@ -16,9 +16,7 @@
     </div>
 <?= $r?>
     </div>
-         <?=CHtml::link('Все кандидаты(Mysql) ('.$votes[cand_all].')', array('candidats/index'), array('class'=>'more'))?>
-         <?=CHtml::link('Все кандидаты (Mongo)('.$votes[cand_all].')', array('mongo/index'), array('class'=>'more'))?>   
-		 <?=CHtml::link('Все кандидаты(CListviev) ('.$votes[cand_all].')', array('candidats/all'), array('class'=>'more'))?>
+         <?=CHtml::link('Все кандидаты ('.$votes[cand_all].')', array('candidats/index'), array('class'=>'more'))?>
          <?=CHtml::link('Предложить своего кандидата', array('candidats/new'),array('class'=>'more'))?>     
         </td>
         <td width="25%" align="center" valign="top">
