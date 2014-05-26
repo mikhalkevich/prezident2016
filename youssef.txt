@@ -1,1 +1,31 @@
 Houjeiri Youssef
+
+sql(
+select c.candidat_id
+from
+(
+select a.candidat_id, za, protive
+from (
+SELECT `candidat_id`, case when COUNT(`protiv_za`) is null then 0 else count(`protiv_za`) end za
+FROM VOTES
+WHERE `protiv_za` = 'za'
+GROUP BY `candidat_id`) a left outer join
+(
+SELECT `candidat_id`, case when COUNT(`protiv_za`) is null then 0 else count(`protiv_za`) end protive
+FROM VOTES
+WHERE `protiv_za` = 'protiv'
+GROUP BY `candidat_id`) b on a.candidat_id = b.candidat_id
+union 
+select a.candidat_id, za, protive
+from (
+SELECT `candidat_id`, case when COUNT(`protiv_za`) is null then 0 else count(`protiv_za`) end za
+FROM VOTES
+WHERE `protiv_za` = 'za'
+GROUP BY `candidat_id`) a right outer join
+(
+SELECT `candidat_id`, case when COUNT(`protiv_za`) is null then 0 else count(`protiv_za`) end protive
+FROM VOTES
+WHERE `protiv_za` = 'protiv'
+GROUP BY `candidat_id`) b on a.candidat_id = b.candidat_id) c
+order by c.za desc, c.protive asc limit 1
+)
