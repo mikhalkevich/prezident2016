@@ -24,10 +24,39 @@ class BaseController extends Controller {
     }
 
     public function actionIndex() {
-        $id = Candidats::model()->findBySql("SELECT * FROM candidats ORDER BY raiting DESC LIMIT 1");
-        $votes=Controller::votes($id->id);
+        $sql1 = "select *
+                        from
+                        (
+                        select a.candidat_id, za, protive
+                        from (
+                        SELECT `candidat_id`, case when COUNT(`protiv_za`) is null then 0 else count(`protiv_za`) end za
+                        FROM VOTES
+                        WHERE `protiv_za` = 'za'
+                        GROUP BY `candidat_id`) a left outer join
+                        (
+                        SELECT `candidat_id`, case when COUNT(`protiv_za`) is null then 0 else count(`protiv_za`) end protive
+                        FROM VOTES
+                        WHERE `protiv_za` = 'protiv'
+                        GROUP BY `candidat_id`) b on a.candidat_id = b.candidat_id
+                        union 
+                        select a.candidat_id, za, protive
+                        from (
+                        SELECT `candidat_id`, case when COUNT(`protiv_za`) is null then 0 else count(`protiv_za`) end za
+                        FROM VOTES
+                        WHERE `protiv_za` = 'za'
+                        GROUP BY `candidat_id`) a right outer join
+                        (
+                        SELECT `candidat_id`, case when COUNT(`protiv_za`) is null then 0 else count(`protiv_za`) end protive
+                        FROM VOTES
+                        WHERE `protiv_za` = 'protiv'
+                        GROUP BY `candidat_id`) b on a.candidat_id = b.candidat_id) c
+                        order by c.za desc, c.protive asc limit 1";
+        
+        $res = Votes::model()->findBySql($sql1);
+        $id = Candidats::model()->findBySql("SELECT * FROM candidats where id = $res->candidat_id");
+        $votes=Controller::votes($res->candidat_id);
         $result = $this->renderPartial('_index',$votes, true);
-        $this->render('index', ['r' => $result, 'golos' => $this->golos,'votes'=>$votes, 'main' => $id]);
+        $this->render('index', array('r' => $result, 'golos' => $this->golos,'votes'=>$votes, 'main' => $id));
     }
 
     public function actionPage($alias, $id) {
