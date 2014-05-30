@@ -37,7 +37,7 @@ public function actions()
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view', 'new', 'all','captcha'),
+                'actions' => array('index', 'view', 'new', 'all','admin'),
                 'users' => array('*'),
             ),
             array('deny', // deny all users
@@ -69,13 +69,8 @@ public function actions()
             Yii::app()->end();
         }
 
-<<<<<<< HEAD
         $result = $this->renderPartial('_view', $votes, true);
         $this->render('view', ['r' => $result,'main' => $model,'votes'=>$votes]);
-=======
-       $result = $this->renderPartial('_view', $votes, true);
-        $this->render('view', array('r' => $result,'main' => $model,'votes'=>$votes));
->>>>>>> f9476c91a111d69a24e739fc207fc6628ed60c6d
         
     }
 /**

@@ -37,12 +37,13 @@ $('.search-form form').submit(function(){
 	'columns'=>array(
                 array(
                 'class'=>'CCheckBoxColumn',
-		'id'=>'checked',
+		        'id'=>'checked',
                 ),
                 array(
                     'name'=>'picture',
                     'header'=> 'Изображение',
                     'type' => 'raw',
+					'cssClassExpression'=>'($data->id>7)?"my":""', //Добавили класс
                     'headerHtmlOptions'=> array('width'=>200),
                     'value'=>'CHtml::image(Yii::app()->request->baseUrl."/images/".$data->picture,"", array("width"=>"200px"))'
                    ),
@@ -52,6 +53,7 @@ $('.search-form form').submit(function(){
 		'status',
 		array(
 			'class'=>'CButtonColumn',
+			'header'=>'Действия'
 		),
 	),
 )); ?>
