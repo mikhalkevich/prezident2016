@@ -21,14 +21,26 @@ class Controller extends CController
 	 */
 	public $breadcrumbs=array();
         
-        
+        public function actions()
+	{
+		return array(
+			'captcha'=>array(
+			//	'class'=>'CCaptchaAction',//выводит буквы
+                                'class'=>'MathCaptchaAction',
+				'minLength' => 1,
+				'maxLength' => 10,           
+			),
+		);
+	}
         public static function votes($id) {
         $votes_za = Votes::model()->count('candidat_id = :id AND protiv_za = "za"', array(':id' => $id));
         $votes_all = Votes::model()->count('candidat_id = :id', array(':id' => $id));
-        $cand_all = Candidats::model()->count();
-        $votes_protiv = $votes_all - $votes_za;
-        $value1 = round($votes_protiv * 100 / $votes_all);
-        $value2 = 100 - $value1;
+        if($votes_all!=0){
+            $cand_all = Candidats::model()->count();
+            $votes_protiv = $votes_all - $votes_za;
+            $value1 = round($votes_protiv * 100 / $votes_all);
+            $value2 = 100 - $value1;
+        } 
         return array('value1' => $value1, 'value2' => $value2, 'votes_za' => $votes_za, 'votes_protiv' => $votes_protiv,'cand_all' => $cand_all);
         }
 }

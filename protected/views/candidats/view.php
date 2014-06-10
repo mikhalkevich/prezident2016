@@ -33,29 +33,14 @@
     </tr>
 </table>
 <div class="about_cand" >
-    <h2 class ="prog">Программа кандидата в президенты</h2>
+    <h2 class ="prog">Мировоззрение</h2>
     <div class="program"> <?php echo $main->about; ?></div>
 </div>
-<script type="text/javascript">
-$(document).ready(function() {
-    $(".program").hide();
-   $(".prog").click(function() {
-      var elem = $(".program");
-      if (elem.is(":hidden")) { // Если элемент скрыт
-           $("elem:visible").hide();
-         // Скрываем видимые элементы
-         elem.show();
-      }
-      else { // Если элемент был отображен ранее
-         elem.hide(); // Скрываем элемент
-      }
-      return false; // Прерываем переход по ссылке
-   });
-});
-</script>
+
 <div class="about_cand">
     <h2 style="display: block;margin: o auto;">
-        <?php echo CHtml::ajaxLink('Биография', '', array('type' => 'POST', 'update' => '.biografy')) ?></h2>
-    <div class="biografy"></div> 
+        <h2 class ="prog">Достижения</h2>
+    <div class="biografy"><?php echo $main->biografy; ?></div> 
 </div>
-<h3> <?= CHtml::link('Все кандидаты (' . $cand_all . ')', array('candidats/index'), array('class' => 'more')) ?></h3>
+<?= CHtml::link('Предложить кандидата', array('candidats/new'), array('class'=>'mocra')) ?> |
+<?= CHtml::link('Все кондидаты', array('candidats/index'), array('class'=>'mocra')) ?>

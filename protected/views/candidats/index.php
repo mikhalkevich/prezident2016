@@ -6,9 +6,8 @@ $this->breadcrumbs = array(
     'Кандидаты',
 );
 ?>
-
 <h2 align="center">Все кандидаты</h2>
-<div class="view" align="center"><h3>Кандидат набравший больше всего голосов, становится Президентом Мира.</h3></div>
+<div class="view" align="center"><h3>Кандидат набравший больше всего голосов, становится Духовным лидером года.</h3></div>
 <table class="table-bordered">
     <tr>
         <th class="nomer">
@@ -21,7 +20,7 @@ $this->breadcrumbs = array(
             Программа
         </th>
         <th class="raiting">
-            Голосов "ЗА"
+            Голосов 
         </th>
         <th class="golos">
             Голосовать
@@ -37,9 +36,26 @@ $this->breadcrumbs = array(
                 <h5><?= CHtml::link($c->name, array('candidats/view/' . $c->id), array('class' => 'bigname')) ?></h5>
             </td>
             <td>
- 
-    <h4 class ="prog1">Программа кандидата в президенты</h4>
+    <h4 class ="prog1">Мировоззрение</h4>
     <p class="program1"> <?php echo $c->about; ?></p>
+            </td>
+            <td>
+                <?$za = 0?>
+                <?$protiv = 0?>
+                <?foreach($c->Votes as $yes):?>
+                 <?$yes->protiv_za == 'za' ? $za++ : $protiv++;?>
+                <?endforeach;?>
+               <h3 class="gol_za"> <?=$za?> </h3>
+               <h3 class="gol_protiv"> <?=$protiv?> </h3>
+            </td>
+            <td>
+                <a name="<?=$c->id?>"></a>
+                <h3 class="link za"><?= CHtml::link('ЗА', array('base/page', 'alias' => 'za', 'id' => $c->id)) ?></h3>
+                <h3 class="link protiv"><?= CHtml::link('ПРОТИВ', array('base/page', 'alias' => 'protiv', 'id' => $c->id)) ?></h3>
+            </td>
+        </tr>  
+    <? endforeach; ?>
+</table>
 <script type="text/javascript">
 $(document).ready(function() {
     $(".program1").hide();
@@ -57,19 +73,3 @@ $(document).ready(function() {
    });
 });
 </script>
-            </td>
-            <td>
-               <h3><?= $c->raiting ?></h3>
-            <td>
-
-                <h3 class="link za"><?= CHtml::link('ЗА', array('base/page', 'alias' => 'za', 'id' => $c->id)) ?></h3>
-                <br/><br/><br/>
-                <h3 class="link protiv"><?= CHtml::link('ПРОТИВ', array('base/page', 'alias' => 'protiv', 'id' => $c->id)) ?></h3>
-
-
-            </td>
-        </tr>  
-    <? endforeach; ?>
-
-
-</table>

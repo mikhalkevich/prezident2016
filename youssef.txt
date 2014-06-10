@@ -1,4 +1,4 @@
-Houjeiri Youssef
+SQL
 
 sql(
 select c.candidat_id

@@ -37,7 +37,7 @@ public function actions()
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view', 'new', 'all','admin'),
+                'actions' => array('index', 'view', 'new', 'all','admin','captcha', 'update'),
                 'users' => array('*'),
             ),
             array('deny', // deny all users

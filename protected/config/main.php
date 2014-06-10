@@ -1,7 +1,7 @@
 <?php
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
-    'name' => 'Президент МИРА',
+    'name' => 'Духовный лидер Человечества '.date('Y').' года',
     'language' => 'ru',
     // включение дефалтного контроллера
     'defaultController' => 'base',

@@ -40,9 +40,9 @@ class Candidatsm extends EMongoDocument{
             'id' => 'ID',
             'picture' => 'Фото',
             'name' => 'Ф.И.О',
-            'about' => 'Программа',
+            'about' => 'Мировоззрение',
             'raiting' => 'Рейтинг',
-            'biografy'=>'Биография',
+            'biografy'=>'Достижения',
             'verifyCode'=>'Капча'
             
         );

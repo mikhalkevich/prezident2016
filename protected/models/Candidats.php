@@ -41,8 +41,9 @@ public $verifyCode;
     public function relations() {
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
-        return array(
-        );
+		return array(
+                    'Votes'=>array(self::HAS_MANY, 'Votes', 'candidat_id')
+		);
     }
 
     /**
@@ -53,9 +54,9 @@ public $verifyCode;
             'id' => 'ID',
             'picture' => 'Фото',
             'name' => 'Ф.И.О',
-            'about' => 'Программа',
+            'about' => 'Мировоззрение',
             'raiting' => 'Рейтинг',
-            'biografy'=>'Биография',
+            'biografy'=>'Достижения',
             'verifyCode'=>'Капча'
             
         );

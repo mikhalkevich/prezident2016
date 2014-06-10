@@ -312,6 +312,15 @@ h2,h3,h4,h5{
      float: bottom;
     
 }
-.program1{
-
+.gol_za, .gol_protiv{
+    display:block;
+    border:solid 1px #E6EFC2;
+    border-radius: 4px;
+    padding:12px;
+    text-decoration: none;
+    text-align:center;
+}
+.more:hover {
+    background: white;
+    text-decoration: none;
 }
