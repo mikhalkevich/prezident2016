@@ -40,7 +40,9 @@ return array(
             ),
         ),
         'db' => array(
+
             'connectionString' => 'mysql:host=localhost;dbname=yii2;port=3302',
+
             'emulatePrepare' => true,
             'username' => 'root',
             'password' => '',
