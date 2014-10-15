@@ -1,5 +1,4 @@
 SQL
-
 sql(
 select c.candidat_id
 from
