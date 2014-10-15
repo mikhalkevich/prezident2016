@@ -40,11 +40,8 @@ return array(
             ),
         ),
         'db' => array(
-<<<<<<< HEAD
             'connectionString' => 'mysql:host=localhost;dbname=yii2;port=3309',
-=======
-            'connectionString' => 'mysql:host=localhost;dbname=yii2;port=3302',
->>>>>>> remotes/origin/Neff
+
             'emulatePrepare' => true,
             'username' => 'root',
             'password' => '',
