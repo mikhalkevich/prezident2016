@@ -40,7 +40,7 @@ return array(
             ),
         ),
         'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=yii2',
+            'connectionString' => 'mysql:host=localhost;dbname=yii2;port=3302',
             'emulatePrepare' => true,
             'username' => 'root',
             'password' => '',
@@ -48,7 +48,7 @@ return array(
         ),
         'mongodb' => array(
             'class' => 'EMongoClient',
-            'server' => 'mongodb://localhost:27017',
+            'server' => 'mongodb://localhost',
             'db' => 'test',
             'enableProfiling' => true
         ),
